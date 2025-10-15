@@ -1,239 +1,269 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Jagadeesh • Modern Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jagadeesh | Portfolio</title>
+
+  <style>
+    /* ==== RESET ==== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #4a00e0, #8e2de2);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* ==== HEADER ==== */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 1000;
+    }
+    header h1 {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #fff;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffd369;
+    }
+
+    /* ==== HERO SECTION ==== */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 100px 60px 0;
+      text-align: left;
+    }
+    .hero-text {
+      max-width: 500px;
+    }
+    .hero h2 {
+      font-size: 2.8em;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.1em;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+    }
+    .hero button {
+      background: #ffd369;
+      color: #000;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .hero button:hover {
+      transform: scale(1.1);
+    }
+    .hero img {
+      width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
+
+    /* ==== ABOUT ==== */
+    section {
+      padding: 80px 40px;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    section p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.05em;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    /* ==== PROJECTS ==== */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .project-card h3 {
+      margin-bottom: 10px;
+      color: #ffd369;
+    }
+    .project-card p {
+      color: #eee;
+      font-size: 0.95em;
+    }
+
+    /* ==== CONTACT ==== */
+    form {
+      max-width: 500px;
+      margin: 30px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, textarea {
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 1em;
+    }
+    input[type="submit"] {
+      background: #ffd369;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    input[type="submit"]:hover {
+      transform: scale(1.05);
+    }
+
+    /* ==== FOOTER ==== */
+    footer {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+
+    /* ==== RESPONSIVE ==== */
+    @media (max-width: 800px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 120px 20px 60px;
+      }
+      .hero img {
+        width: 90%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#">Jagadeesh</a>
-      <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <button id="themeToggle" aria-label="Toggle theme">🌙</button>
-      </nav>
-    </div>
+  <!-- HEADER -->
+  <header>
+    <h1>Jagadeesh</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>Beautiful web experiences<br/><span class="accent">crafted with code</span></h1>
-          <p class="lead">
-            Frontend-focused portfolio template — responsive, accessible, and easy to customize.
-            Built with plain HTML, CSS and small JavaScript.
-          </p>
-          <div class="hero-ctas">
-            <a class="btn primary" href="#projects">View projects</a>
-            <a class="btn ghost" href="#contact">Contact me</a>
-          </div>
-        </div>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h2>Welcome to My Portfolio</h2>
+      <p>I’m Jagadeesh — a creative web developer passionate about interactive designs, AI-powered apps, and 3D web games. Explore my projects below!</p>
+      <button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View My Work</button>
+    </div>
+    <!-- Base64 embedded image -->
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAADwCAMAAABhHTsFAAAAM1BMVEX///8AAADn5+eampqkpKR2dnaMjIylpaXPz8/v7+/T09O7u7vQ0NCEhISZmZlwcHCCgoJPT08zOEVdAAABwUlEQVR4nO3cQW7DMAwF0M7p//8rkA6cPgrEpETqnFz7WReHrfrxkVIBAAAAAAAAAAAAAPjAv2UMRfoRFwrmpxozX+vmu4Ww9cFhflDdkqzqgUp7dBkNRlfrkrX24EbtktTNgU6stfiVjMoZndTCobgXYm+tn1hGqKJrSKZW8hH7uMZ5djHC1lhxKiSuU7bhQ5w4l5idDiZ3iMp4Pp+eLf4vH+nl/dqx4svKp05FiM5lb3sZTeQnV6p2vB1K9qdzv3vdOYZxKuayvfLGeWi/ZX7m86SPONmx0eiEq5oHdjJjvOt7DPWqO7ZTlR83ULVrsezvOs3XqXtrwP06gU4XLQFvY7H55Q/SLdA/csa54b1OSXr9jctNcxf5xxOXpcVzdXtLffmHUbrwW1uV8frp7Pa/93H2PbrgAAAAAAAAAAAAAAgN8B5MRTm6PBGJsAAAAASUVORK5CYII=" alt="Hero Image">
+  </section>
 
-        <div class="hero-card" aria-hidden="false">
-          <div class="device-mockup">
-            <img src="data:image/svg+xml;utf8,
-              <svg xmlns='http://www.w3.org/2000/svg' width='560' height='320'>
-                <rect rx='18' ry='18' width='100%' height='100%' fill='%23ffffff'/>
-                <text x='50%' y='50%' font-size='18' text-anchor='middle' fill='%23999' font-family='Arial'>Project Preview</text>
-              </svg>"
-              alt="project preview" />
-          </div>
-        </div>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a Computer Science student and a passionate developer who loves turning creative ideas into real working web applications.
+      I specialize in front-end development, AI-powered tools, and interactive 3D web experiences.
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXQAAAF0CAMAAADL6SJdAAAAXVBMVEX///8AAAD19fWnp6ejo6OdnZ3h4eGXl5e9vb3a2tq8vLyDg4Pl5eXz8/PBwcHY2Ni6urpAQEA/Pz/4+PjCwsK3t7enp6fh4eGioqIuLi7f399fX18LCwq3AAABJUlEQVR4nO3dsQ3CQAxFUd7Cff+3iYZHQccLaQnpe7mZshq3rbW4AAAAAAAAAAAAAgPwF0mZbU3RFaB8lF7lRucWbOB9cyqq/vxKeD0ny7n9zKlEjvYoN33jVu+QxdH5K6br7nZdlrfbK7Lxnk2M2uCix1k9V+z7x4nuu3dJZ5Syy+VUq4PZ2f+npN0vzrshUUnPZW5lX46XM5VnJ+vjWlujJ+/yL57R23cHV0PvWTr+cX+4xAAAAAAAAAAAAAAAB+Hv4BrswlvqUBP9QAAAAASUVORK5CYII=" alt="Project 1">
+        <h3>AI PDF Reader</h3>
+        <p>A smart AI web app that scans PDFs and answers questions with text and image references.</p>
       </div>
-    </section>
 
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2 class="section-title">About</h2>
-        <div class="grid about-grid">
-          <div class="card">
-            <h3>Hello — I'm Jagadeesh</h3>
-            <p>
-              I build interactive front-end experiences and small single-file apps. I enjoy clean UI,
-              animations, and making sites feel playful yet professional.
-            </p>
-            <ul class="skills">
-              <li>HTML & CSS</li>
-              <li>JavaScript</li>
-              <li>Responsive Design</li>
-              <li>Game & UI Prototyping</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Quick stats</h3>
-            <div class="stats">
-              <div><strong>8+</strong><span>projects</span></div>
-              <div><strong>4+</strong><span>years</span></div>
-              <div><strong>100%</strong><span>passion</span></div>
-            </div>
-          </div>
-        </div>
+      <div class="project-card">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXQAAAF0CAMAAADL6SJdAAAAb1BMVEX///8AAAD19fWnp6ejo6OdnZ3h4eGXl5e9vb3a2tq8vLyDg4Pl5eXz8/PBwcHY2Ni6urpAQEA/Pz/4+PjCwsK3t7enp6fh4eGioqIuLi7f399fX18LCwqVlbzHAAABhklEQVR4nO3dsQ3CQAxFUa7Cvf+3iYZHg+fGkITpu3mbshq3rbW4AAAAAAAAAAAAAgPwF0mZbU3RFaB8lF7lRucWbOB9cyqq/vxKeD0ny7n9zKlEjvYoN33jVu+QxdH5K6br7nZdlrfbK7Lxnk2M2uCix1k9V+z7x4nuu3dJZ5Syy+VUq4PZ2f+npN0vzrshUUnPZW5lX46XM5VnJ+vjWlujJ+/yL57R23cHV0PvWTr+cX+4xAAAAAAAAAAAAAAAB+Hv4BqkwlH8RjXkAAAAASUVORK5CYII=" alt="Project 2">
+        <h3>3D Bubble Shooter</h3>
+        <p>A 3D interactive bubble shooter game made with HTML, CSS, and JavaScript.</p>
       </div>
-    </section>
 
-    <!-- Projects -->
-    <section id="projects" class="section bg-alt">
-      <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <p class="section-sub">Some selectable sample projects. Click a card to open details.</p>
-
-        <div class="grid projects-grid">
-          <article class="project-card" tabindex="0" data-title="3D Cube Demo" data-desc="Interactive 3D CSS cube with rotation and controls." data-img="">
-            <div class="card-media"></div>
-            <h3>3D Cube Demo</h3>
-            <p>CSS 3D transforms and interactive controls.</p>
-            <div class="card-footer">
-              <span class="tag">HTML/CSS</span>
-              <button class="btn small open-modal">Preview</button>
-            </div>
-          </article>
-
-          <article class="project-card" tabindex="0" data-title="AI PDF Reader UI" data-desc="Frontend for AI PDF question/answer UI with image extraction (no backend)." data-img="">
-            <div class="card-media"></div>
-            <h3>AI PDF Reader UI</h3>
-            <p>Upload PDFs, ask questions, get highlighted answers + image snippets.</p>
-            <div class="card-footer">
-              <span class="tag">UI</span>
-              <button class="btn small open-modal">Preview</button>
-            </div>
-          </article>
-
-          <article class="project-card" tabindex="0" data-title="Mini Game: Bubble Pop" data-desc="Small canvas-based bubble pop game, keyboard + touch controls." data-img="">
-            <div class="card-media"></div>
-            <h3>Bubble Pop</h3>
-            <p>Lightweight JS game for fun interactions and animations.</p>
-            <div class="card-footer">
-              <span class="tag">JS</span>
-              <button class="btn small open-modal">Preview</button>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="grid contact-grid">
-          <form class="card contact-form" action="mailto:youremail@example.com" method="POST" enctype="text/plain">
-            <label>
-              <span>Your name</span>
-              <input required type="text" name="name" placeholder="Jagadeesh" />
-            </label>
-            <label>
-              <span>Email</span>
-              <input required type="email" name="email" placeholder="you@example.com" />
-            </label>
-            <label>
-              <span>Message</span>
-              <textarea required name="message" rows="5" placeholder="Say hi..."></textarea>
-            </label>
-            <div class="form-actions">
-              <button type="submit" class="btn primary">Send</button>
-              <button type="reset" class="btn ghost">Reset</button>
-            </div>
-          </form>
-
-          <div class="card">
-            <h3>Let's build something</h3>
-            <p>Prefer GitHub? <a href="https://github.com/jaggu-max" target="_blank" rel="noopener">Check my repos</a>.</p>
-            <ul class="contact-list">
-              <li>Location: India</li>
-              <li>Availability: Open for projects</li>
-              <li>Languages: English, Telugu</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <div class="container">
-        <p>© <span id="year"></span> Jagadeesh • Built with ❤️ • <a href="#top">Back to top</a></p>
-      </div>
-    </footer>
-  </main>
-
-  <!-- Modal -->
-  <div id="modal" class="modal" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <button id="modalClose" class="modal-close" aria-label="Close">✕</button>
-      <h3 id="modalTitle">Project</h3>
-      <p id="modalDesc"></p>
-      <div id="modalPreview" class="modal-preview" aria-hidden="true">
-        <!-- dynamic preview area -->
+      <div class="project-card">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXQAAAF0CAMAAADL6SJdAAAAXVBMVEX///8AAAD19fWnp6ejo6OdnZ3h4eGXl5e9vb3a2tq8vLyDg4Pl5eXz8/PBwcHY2Ni6urpAQEA/Pz/4+PjCwsK3t7enp6fh4eGioqIuLi7f399fX18LCwoNAAABKklEQVR4nO3dsQ3CQAxFUd7Cff+3iYZHQccLaQnpe7mZshq3rbW4AAAAAAAAAAAAAgPwF0mZbU3RFaB8lF7lRucWbOB9cyqq/vxKeD0ny7n9zKlEjvYoN33jVu+QxdH5K6br7nZdlrfbK7Lxnk2M2uCix1k9V+z7x4nuu3dJZ5Syy+VUq4PZ2f+npN0vzrshUUnPZW5lX46XM5VnJ+vjWlujJ+/yL57R23cHV0PvWTr+cX+4xAAAAAAAAAAAAAAAB+Hv4BVhUlX1vF3PkAAAAASUVORK5CYII=" alt="Project 3">
+        <h3>Voice Translator</h3>
+        <p>An all-in-one translator that listens, translates, and speaks with animation and UI effects.</p>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form action="mailto:youremail@example.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+      <input type="submit" value="Send Message">
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> Jagadeesh — Built with ❤️ and creativity
+  </footer>
 
   <script>
-    // Small JS for theme toggle, modal, and utilities
-    const year = document.getElementById('year');
-    year.textContent = new Date().getFullYear();
-
-    const themeToggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    const savedTheme = localStorage.getItem('pref-theme');
-    if (savedTheme) root.setAttribute('data-theme', savedTheme);
-    themeToggle.textContent = (root.getAttribute('data-theme') === 'dark') ? '☀️' : '🌙';
-
-    themeToggle.addEventListener('click', () => {
-      const cur = root.getAttribute('data-theme');
-      const next = cur === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('pref-theme', next);
-      themeToggle.textContent = (next === 'dark') ? '☀️' : '🌙';
-    });
-
-    // Modal preview logic
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalPreview = document.getElementById('modalPreview');
-    const modalClose = document.getElementById('modalClose');
-
-    document.querySelectorAll('.open-modal').forEach(btn => {
-      btn.addEventListener('click', openCardModal);
-    });
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') openCardModal({ target: card.querySelector('.open-modal') });
-      });
-    });
-
-    function openCardModal(e) {
-      const card = e.target.closest('.project-card');
-      const title = card.dataset.title;
-      const desc = card.dataset.desc;
-      modalTitle.textContent = title;
-      modalDesc.textContent = desc;
-      modalPreview.innerHTML = `<div class="preview-box"><strong>${title}</strong><p>${desc}</p></div>`;
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      modalClose.focus();
-    }
-
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-    });
-    function closeModal() {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      modalPreview.innerHTML = '';
-    }
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
